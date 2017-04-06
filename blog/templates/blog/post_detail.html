@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> {{ category.name_category }}</title>
+  </head>
+  <body>
+    <h1> {{ category.kr_name_category }} </h1>
+    <h1> {{ category.name_category }}</h1>
+
+    </hr>
+
+    <h3>Club List</h3>
+    <ul>
+
+    {% for dongari in category.dongari_set.all %}
+      <li>{{ dongari.name_dongari }}</li>
+      <ul>
+        <li>{{ dongari.kr_name_dongari }}</li>
+        <li>{{ dongari.description }}</li>
+      </ul>
+    {% endfor %}
+    </ul>
+
+  </body>
+</html>

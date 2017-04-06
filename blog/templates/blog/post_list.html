@@ -8,6 +8,25 @@
     <title>Ask Django Blog</title>
   </head>
   <body>
-    <h1>Ask Django!</h1>
+    <h1>동아리 검색 ㄱㄱ</h1>
+
+    <form action="" method="get">
+      <input type="text" name="q" value="{{ q }}"/>
+      <input type="submit" value="검색" />
+    </form>
+    <ul>
+    {% for category in category_list %}
+
+      <li>
+        <a href="/blog/{{ category.id }}/">
+          {{ category.kr_name_category }}
+        </a>
+        <a href="/blog/{{ category.id }}/">
+          <small>({{ category.name_category }})</small>
+        </a>
+      </li>
+
+    {% endfor %}
+    </ul>
   </body>
 </html>
