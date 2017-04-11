@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Category, Dongari, Core
+from blog.models import Category, Dongari, Core, Tag
 
 class coreAdmin(admin.ModelAdmin):
     class Meta:
@@ -22,5 +22,10 @@ class dongariAdmin(admin.ModelAdmin):
 admin.site.register(Category, categoryAdmin)
 admin.site.register(Dongari, dongariAdmin)
 admin.site.register(Core, coreAdmin)
+
+@admin.register(Tag)
+class tagAdmin(admin.ModelAdmin):
+    list_display = ['name_tag']
+
 
 # Register your models here.

@@ -8,7 +8,11 @@ def mail_validator(value):
     if not re.match(r'^[a-zA-Z0-9_.+-]+@snu.ac.kr$', value):
         raise ValidationError('snu.ac.kr로 끝나는 "스누메일"을 적어주세요')
 
+class Tag(models.Model):
+    name_tag = models.CharField(max_length=20, unique=True)
 
+    def __str__(self):
+        return self.name_tag
 
 class Core(models.Model):
     name_core = models.CharField(max_length=20, help_text='Root (English)')
@@ -43,6 +47,8 @@ class Dongari(models.Model):
     #     validators=[mail_validator], help_text='스누메일')
     created_at = models.DateTimeField(auto_now_add=True)
     # updated_at = models.DateTimeField(auto_now=True)
+    tag_set = models.ManyToManyField('Tag') #이게 문자열로도 지정 가능하다. ('Tag') vs. (Tag).
+                                            #For latter case, the "Tag" class MUST be defined before this (Dongari) class
 
     def __str__(self):
         return self.name_dongari
